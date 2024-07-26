@@ -1,18 +1,18 @@
 import express, { Request, Response } from "express"
-import { check,validationResult } from "express-validator"; // Import the 'check' function from 'express-validator'
+import { check, validationResult } from "express-validator"; // Import the 'check' function from 'express-validator'
 import User from "../models/user";
 import jwt from "jsonwebtoken"
 
 const router = express.Router();
 
-router.post("/register", [check("firstName","First Name is required").isString(),
-        check("lastName", "Last Name is required").isString(),
-        check("email", "Email is required").isEmail(),
-        check("password", "Password with 6 or more characters required").isLength({min:6}),
-],async (req: Request, res: Response) => {
+router.post("/register", [check("firstName", "First Name is required").isString(),
+check("lastName", "Last Name is required").isString(),
+check("email", "Email is required").isEmail(),
+check("password", "Password with 6 or more characters required").isLength({ min: 6 }),
+], async (req: Request, res: Response) => {
         const errors = validationResult(req);
-        if(!errors.isEmpty()){
-               return res.status(400).json({message:errors.array()})
+        if (!errors.isEmpty()) {
+                return res.status(400).json({ message: errors.array() })
         }
         try {
                 let user = await User.findOne({
@@ -30,7 +30,7 @@ router.post("/register", [check("firstName","First Name is required").isString()
                         secure: process.env.Node_ENV === "production",
                         maxAge: 86400000
                 })
-                return res.status(200).send({message:"User registered OK"})
+                return res.status(200).send({ message: "User registered OK" })
         } catch (err) {
                 console.log(err)
                 res.status(500).send({ message: "Something went wrong" })
