@@ -1,7 +1,7 @@
 import { RegisterFormData } from "./pages/register"
 import { singInForm } from "./pages/Signin";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 export const register = async (formData: RegisterFormData) => {
         const response = await fetch(`${API_BASE_URL}/api/users/register`, {
 
@@ -17,7 +17,7 @@ export const register = async (formData: RegisterFormData) => {
 
 
         if (!response.ok) {
-        
+
                 throw new Error(responseBody.message)
         }
 
@@ -61,5 +61,5 @@ export const signOut = async () => {
         if (!response.ok) {
                 throw new Error("error during sign out")
         }
-        
+
 }

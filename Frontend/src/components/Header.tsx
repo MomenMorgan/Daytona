@@ -17,7 +17,7 @@ export default function Header() {
                 to="/my-bookings"
                 className="flex items-center text-white px-3 font-bold hover:bg-blue-600"
               >
-                Hookings
+                Bookings
               </Link>
               <Link to="/my-hotels" className="flex items-center text-white px-3 font-bold hover:bg-blue-600">Hotels</Link> 
               <SignOutButton></SignOutButton>
@@ -28,7 +28,7 @@ export default function Header() {
               className=" bg-white flex items-center text-blue-600
                         px-3 font-bold hover:bg-gray-300 "
             >
-              Sign in
+              Sign In
             </Link>
           )}
         </span>

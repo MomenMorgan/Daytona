@@ -21,7 +21,7 @@ export default function Signin() {
   const mutation = useMutation(apiClient.signIn, {
     onSuccess: async () => {
       showToast({
-        message: "Sign in successfull!",
+        message: "Sign in successful!",
         type: "SUCCESS",
       });
       await queryClient.invalidateQueries("validateToken");
